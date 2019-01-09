@@ -7,16 +7,16 @@
  * Time: 3:33 PM
  */
 $cupcakeFlavors = array("grasshopper" => "The Grasshopper", "maple" => "Whiskey Maple Bacon", "carrot" => "Carrot Walnut", "caramel" => "Salted Caramel Cupcake", "velvet" => "Red Velvet", "lemon" => "Lemon Drop", "tiramisu" => "Tiramisu");
-$countSelected = count($_POST['cupcakeFlavors']);
-$formHidden = false;
-$checkCheckbox = false;
+$countSelected = count($_POST['cupcakeFlavors']); //counts the flavors
+$formHidden = false; //The form the user sees in the beginning to select cupcakes
+$checkCheckbox = false; //For checkbox being checked
 
 if (!empty($_POST)) {
-    $validForm = true;
+    $validForm = true; //sets the form valid to true and checks with if statements
 
     if (empty($_POST['username'])) {
-        echo  "<p>Please enter in your name.</p>";
-        $validForm = false;
+        echo  "<p>Please enter in your name.</p>"; //prompts the user to enter their name
+        $validForm = false; //makes the form not valid
     }
     if (!isset($_POST['cupcakeFlavors'])) {
         $checkCheckbox = true;
@@ -25,7 +25,7 @@ if (!empty($_POST)) {
         $cupcakesSelected = ($_POST['cupcakeFlavors']);
     }
 
-    if ($validForm) {
+    if ($validForm) { //checks if form is valid and then prints out the order summary
         $formHidden = true;
         echo "<h4>Thank you " . $_POST['username'] . " for your order!</h4>";
         echo "Order Summary:";
@@ -36,7 +36,7 @@ if (!empty($_POST)) {
     }
 }
 
-if ($checkCheckbox) {
+if ($checkCheckbox) { //checks if a cupcake type or flavor is checked
     echo "<p style='color: red'>At least one cupcake is required.</p>";
     $checkCheckbox = false;
 }
